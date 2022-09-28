@@ -1,4 +1,5 @@
-import { Container, Space, Title } from "@mantine/core";
+import { Container, Title } from "@mantine/core";
+import { AuthModule } from "../../../../core/auth/AuthModule";
 import { MainShell } from "../../layout/MainShell";
 import { RegisterForm } from "./RegisterForm";
 
@@ -10,8 +11,10 @@ export function RegisterPage() {
           Crea un nuevo usuario
         </Title>
         <RegisterForm
-          onSubmit={async function (values): Promise<void> {
-            console.log(values);
+          onSubmit={async function (values) {
+            const registerUseCase = await AuthModule.RegisterUseCase();
+            await registerUseCase.call(values);
+            console.log("user created");
           }}
         />
       </Container>
