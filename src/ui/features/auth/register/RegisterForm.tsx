@@ -1,7 +1,7 @@
+import { Button, Group, PasswordInput, TextInput } from "@mantine/core";
+import { Form, Formik } from "formik";
 import * as yup from "yup";
-import { Button, PasswordInput, TextInput } from "@mantine/core";
 import { RegisterModel } from "../../../../core/auth/domain/models/RegisterModel";
-import { Formik, Form } from "formik";
 
 interface IRegisterForm {
   onSubmit(values: RegisterModel): Promise<void>;
@@ -45,11 +45,13 @@ export function RegisterForm({ onSubmit }: IRegisterForm) {
             name="password"
             onChange={p.handleChange}
             error={p.touched.password && p.errors.password}
-            mb={16}
+            mb={48}
           />
-          <Button loading={p.isSubmitting} type="submit">
-            Enviar
-          </Button>
+          <Group position="right">
+            <Button loading={p.isSubmitting} type="submit">
+              Enviar
+            </Button>
+          </Group>
         </Form>
       )}
     </Formik>
