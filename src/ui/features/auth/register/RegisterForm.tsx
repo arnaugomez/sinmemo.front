@@ -1,30 +1,21 @@
-import { RegisterFormValues } from "./view-models/RegisterFormValues";
-import { Form, Formik } from "formik";
 import * as yup from "yup";
 import { Button, PasswordInput, TextInput } from "@mantine/core";
+import { RegisterModel } from "../../../../core/auth/domain/models/RegisterModel";
+import { Formik, Form } from "formik";
 
 interface IRegisterForm {
-  onSubmit(values: RegisterFormValues): Promise<void>;
+  onSubmit(values: RegisterModel): Promise<void>;
 }
 
-const initialValues: RegisterFormValues = {
+const initialValues: RegisterModel = {
   email: "",
   password: "",
-  repeatPassword: "",
 };
 
 const schema = yup.object({
   // TODO poner literales de errores
   email: yup.string().required().email(),
   password: yup.string().required().min(8),
-  repeatPassword: yup
-    .string()
-    .required()
-    .test(
-      "repeatPassword",
-      "Password must match",
-      (value, context) => value === context.parent.password
-    ),
 });
 
 export function RegisterForm({ onSubmit }: IRegisterForm) {
@@ -55,16 +46,6 @@ export function RegisterForm({ onSubmit }: IRegisterForm) {
             onChange={p.handleChange}
             error={p.touched.password && p.errors.password}
             mb={16}
-          />
-          <PasswordInput
-            label="Repetir contraseña"
-            placeholder="Repite tu contraseña"
-            withAsterisk
-            value={p.values.repeatPassword}
-            name="repeatPassword"
-            onChange={p.handleChange}
-            error={p.touched.repeatPassword && p.errors.repeatPassword}
-            mb={32}
           />
           <Button loading={p.isSubmitting} type="submit">
             Enviar

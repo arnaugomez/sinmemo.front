@@ -11,7 +11,7 @@ export function RegisterPage() {
           Crea un nuevo usuario
         </Title>
         <RegisterForm
-          onSubmit={async function (values) {
+          onSubmit={async (values) => {
             const registerUseCase = await AuthModule.RegisterUseCase();
             await registerUseCase.call(values);
             console.log("user created");
