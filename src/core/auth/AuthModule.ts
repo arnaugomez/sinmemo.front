@@ -10,4 +10,5 @@ export const AuthModule = {
     import("./domain/use-cases/RegisterUseCase").then(
       (v) => v._registerUseCase
     ),
+  LoginUseCase: () => import("./domain/use-cases/LoginUseCase").then(m => m._loginUseCase),
 };
