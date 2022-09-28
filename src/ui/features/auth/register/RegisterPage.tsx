@@ -1,22 +1,17 @@
 import { Container, Title } from "@mantine/core";
-import { AuthModule } from "../../../../core/auth/AuthModule";
 import { MainShell } from "../../layout/MainShell";
+import { useRegisterController } from "./controllers/registerController";
 import { RegisterForm } from "./RegisterForm";
 
 export function RegisterPage() {
+  const registerController = useRegisterController();
   return (
     <MainShell>
       <Container size="xs">
         <Title order={1} mt={64} mb={32}>
           Crea un nuevo usuario
         </Title>
-        <RegisterForm
-          onSubmit={async (values) => {
-            const registerUseCase = await AuthModule.RegisterUseCase();
-            await registerUseCase.call(values);
-            console.log("user created");
-          }}
-        />
+        <RegisterForm onSubmit={registerController} />
       </Container>
     </MainShell>
   );

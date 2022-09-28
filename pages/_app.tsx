@@ -2,6 +2,7 @@ import { AppProps } from "next/app";
 import Head from "next/head";
 import { MantineProvider } from "@mantine/core";
 import { RecoilRoot } from "recoil";
+import { NotificationsProvider } from "@mantine/notifications";
 
 export default function App(props: AppProps) {
   const { Component, pageProps } = props;
@@ -23,7 +24,9 @@ export default function App(props: AppProps) {
         withNormalizeCSS
         theme={{ colorScheme: "light" }}
       >
-        <Component {...pageProps} />
+        <NotificationsProvider>
+          <Component {...pageProps} />
+        </NotificationsProvider>
       </MantineProvider>
     </RecoilRoot>
   );
