@@ -1,10 +1,13 @@
 import { Button, Group, PasswordInput, TextInput } from "@mantine/core";
-import { Form, Formik } from "formik";
+import { Form, Formik, FormikHelpers } from "formik";
 import * as yup from "yup";
 import { LoginModel } from "../../../../core/auth/domain/models/LoginModel";
 
 interface ILoginForm {
-  onSubmit(values: LoginModel): Promise<void>;
+  onSubmit(
+    values: LoginModel,
+    helpers: FormikHelpers<LoginModel>
+  ): Promise<void>;
 }
 
 const initialValues: LoginModel = {
