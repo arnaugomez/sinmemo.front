@@ -1,15 +1,10 @@
-import { AffixProps } from "@mantine/core";
-import { CommonModule } from "../commonModule";
 import { IEnvVars } from "../interfaces/IEnvVars";
 import { IHttpClient } from "../interfaces/IHttpClient";
 import { envVars } from "./EnvVars";
 import axios, { AxiosInstance } from "axios";
 
 class HttpClient implements IHttpClient {
-  private instance: AxiosInstance;
-  constructor(envVars: IEnvVars) {
-    this.instance = axios.create({ baseURL: envVars.baseUrl });
-  }
+  instance = axios.create({ baseURL: envVars.baseUrl });
 
   async get<T>(path: string): Promise<T> {
     const response = await this.instance.get<T>(path);
@@ -33,4 +28,4 @@ class HttpClient implements IHttpClient {
   }
 }
 
-export const _httpClient = new HttpClient(envVars);
+export const _httpClient = new HttpClient();

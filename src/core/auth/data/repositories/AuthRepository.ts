@@ -9,12 +9,12 @@ class AuthRepository implements IAuthRepository {
 
   async register(input: RegisterModel): Promise<void> {
     const httpClient = await this.getHttpClient();
-    await httpClient.post("register", input);
+    await httpClient.post("users/register", input);
   }
 
   async login(input: LoginModel): Promise<void> {
     const httpClient = await this.getHttpClient();
-    await httpClient.post("login", input);
+    await httpClient.post("users/login", input);
   }
 }
 
