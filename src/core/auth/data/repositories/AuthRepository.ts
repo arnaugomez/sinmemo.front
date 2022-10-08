@@ -1,4 +1,4 @@
-import { CommonModule } from "../../../../common/commonModule";
+import { CommonModule } from "../../../../common/CommonModule";
 import { waitFor } from "../../../../common/utils/promise";
 import { IAuthRepository } from "../../domain/interface/IAuthRepository";
 import { LoginModel } from "../../domain/models/LoginModel";

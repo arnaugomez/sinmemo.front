@@ -1,7 +1,6 @@
-import { IEnvVars } from "../interfaces/IEnvVars";
+import axios from "axios";
 import { IHttpClient } from "../interfaces/IHttpClient";
 import { envVars } from "./EnvVars";
-import axios, { AxiosInstance } from "axios";
 
 class HttpClient implements IHttpClient {
   instance = axios.create({ baseURL: envVars.baseUrl });

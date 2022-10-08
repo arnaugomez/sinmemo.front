@@ -1,6 +1,4 @@
-import { _authRepository } from "./data/repositories/AuthRepository";
 import { IAuthRepository } from "./domain/interface/IAuthRepository";
-import { _registerUseCase } from "./domain/use-cases/RegisterUseCase";
 
 /** Service locator for dependency injection of auth related use cases,
  *  services and repositories */
